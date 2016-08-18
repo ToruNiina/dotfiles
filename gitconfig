@@ -1,0 +1,27 @@
+[core]
+    editor = vim
+
+[alias]
+    branches = branch -a
+    tags = tag -l
+    stashes = stash list
+    remotes = remote -v
+    configs = config --list
+    unstage = reset -q HEAD
+    discard = checkout --
+    amend = commit --amend
+    forget = rm --cached
+    graph = log --graph -20 --branches --remotes --tags --date-order --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d'
+    staetus = status
+    statues = status
+    statsu = status
+    statys = status
+    sattus = status
+    stastu = status
+    stasut = status
+    stauts = status
+    stats = status
+    statu = status
+    staut = status
+    staus = status
+    satus = status
