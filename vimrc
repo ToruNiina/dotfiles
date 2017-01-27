@@ -2,6 +2,10 @@ if $SHELL =~ 'fish'
     set shell=/bin/bash
 endif
 
+" key re mapping"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+imap <C-j> <esc>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 "Neobundle""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('vim_starting')
   set nocompatible
@@ -13,6 +17,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " colorschemes""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'cocopon/lightline-hybrid.vim'
 " plugins"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
@@ -20,6 +25,9 @@ NeoBundle 'tyru/caw.vim'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'rust-lang/rust.vim'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'cespare/vim-toml'
+NeoBundle 'ntpeters/vim-better-whitespace'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call neobundle#end()
 " Required:
@@ -36,7 +44,7 @@ vmap \C <Plug>(caw:I:uncomment)
 
 " lightline settings""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lightline = {
-    \ 'colorscheme': 'wombat',
+    \ 'colorscheme': 'hybrid',
     \ 'active': {
     \   'left':  [ ['mode', 'paste'],
     \              ['fugitive', 'readonly', 'filename', 'modified'] ],
@@ -173,6 +181,14 @@ endfunction
 command! Count call s:Count_impl()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" count number of letters"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! s:Count_impl()
+   :%s/./&/g
+   :noh
+endfunction
+command! Count call s:Count_impl()
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " folding"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set foldmethod=marker
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -182,4 +198,5 @@ set t_Co=256
 set background=dark
 colorscheme hybrid
 syntax on
+highlight ExtraWhitespace ctermbg=160
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
