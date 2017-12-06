@@ -4,6 +4,11 @@ endif
 
 " key re mapping"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 imap <C-j> <esc>
+let mapleader = "\<Space>"
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
+noremap  <Leader>h 0
+noremap  <Leader>l $
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "Neobundle""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -36,10 +41,10 @@ NeoBundleCheck
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " caw remaps""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap \c <Plug>(caw:I:toggle)
-vmap \c <Plug>(caw:I:toggle)
-nmap \C <Plug>(caw:I:uncomment)
-vmap \C <Plug>(caw:I:uncomment)
+nmap \c <Plug>(caw:zeropos:toggle)
+vmap \c <Plug>(caw:zeropos:toggle)
+nmap \C <Plug>(caw:zeropos:uncomment)
+vmap \C <Plug>(caw:zeropos:uncomment)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " lightline settings""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -141,6 +146,7 @@ set title
 set ruler
 set number
 set ttyfast
+set nowrap
 set noswapfile
 set lazyredraw
 "search setting"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -158,7 +164,13 @@ set cursorline
 " set cursorcolumn
 set laststatus=2
 set showtabline=2
-set synmaxcol=300
+set synmaxcol=150
+set noshowmode
+set re=1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set fileencoding=utf-8
+set ambiwidth=double
+:command ShiftJis :e ++enc=shift_jis
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "binary edit""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -171,14 +183,6 @@ augroup BinaryXXD
   autocmd BufWritePost * if &binary | silent %!xxd
   autocmd BufWritePost * set nomod | endif
 augroup END
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" count number of letters"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! s:Count_impl()
-    :%s/./&/g
-    :noh
-endfunction
-command! Count call s:Count_impl()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " count number of letters"""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -199,4 +203,10 @@ set background=dark
 colorscheme hybrid
 syntax on
 highlight ExtraWhitespace ctermbg=160
+let g:indentLine_faster = 1
+set norelativenumber
+syntax sync minlines=256
+
+au BufNewFile,BufRead *cuh set ft=cuda
+au BufNewFile,BufRead *cu set ft=cuda
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
