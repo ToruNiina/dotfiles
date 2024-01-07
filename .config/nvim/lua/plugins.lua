@@ -262,7 +262,8 @@ return {
                     lualine_c = {
                         {
                             'filename',
-                            path = 4,
+                            path = 3,
+                            shorting_target = 40,
                             symbols = {
                                 modified = '[+]',
                                 readonly = '[R]',
