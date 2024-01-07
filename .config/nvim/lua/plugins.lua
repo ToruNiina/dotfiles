@@ -42,6 +42,9 @@ return {
     -- completion --------------------------------------------------------------
     {
         'neovim/nvim-lspconfig',
+        dependencies = {
+            'hrsh7th/cmp-nvim-lsp', -- capabilities
+        },
         config = function()
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
             lspcfg = require('lspconfig')
@@ -67,16 +70,15 @@ return {
         end,
     },
     {
-        'p00f/clangd_extensions.nvim'
-    },
-
-    { 'hrsh7th/vim-vsnip' },
-    { 'hrsh7th/cmp-vsnip' },
-    { 'hrsh7th/cmp-nvim-lsp', },
-    { 'hrsh7th/cmp-buffer' },
-    { 'hrsh7th/cmp-path' },
-    {
         'hrsh7th/nvim-cmp',
+        dependencies = {
+            'hrsh7th/vim-vsnip',
+            'hrsh7th/cmp-vsnip',
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'p00f/clangd_extensions.nvim'
+        },
         config = function()
             local cmp = require('cmp')
             cmp.setup({
@@ -294,25 +296,27 @@ return {
         end,
     },
     {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        build = 'make',
-    },
-    {
         'nvim-telescope/telescope.nvim',
-        dependencies = { 'nvim-lua/plenary.nvim' },
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            {
+                'nvim-telescope/telescope-fzf-native.nvim',
+                build = 'make',
+            }
+        },
         config = function()
             local telescope = require('telescope')
             telescope.load_extension('fzf')
 
             local builtin = require('telescope.builtin')
-            vim.keymap.set('n', '<Leader>ff', builtin.find_files, {})
-            vim.keymap.set('n', '<Leader>fg', builtin.live_grep, {})
-            vim.keymap.set('n', '<Leader>fb', builtin.buffers, {})
-            vim.keymap.set('n', '<Leader>fh', builtin.help_tags, {})
+            vim.keymap.set('n', '<Leader>ff', builtin.find_files)
+            vim.keymap.set('n', '<Leader>fg', builtin.live_grep)
+            vim.keymap.set('n', '<Leader>fb', builtin.buffers)
+            vim.keymap.set('n', '<Leader>fh', builtin.help_tags)
 
-            vim.api.nvim_create_user_command('File', ':Telescope find_files', {})
-            vim.api.nvim_create_user_command('Grep', ':Telescope live_grep', {})
-            vim.api.nvim_create_user_command('Repo', ':Telescope git_files', {})
+            vim.api.nvim_create_user_command('File', ':Telescope find_files')
+            vim.api.nvim_create_user_command('Grep', ':Telescope live_grep')
+            vim.api.nvim_create_user_command('Repo', ':Telescope git_files')
         end,
     },
 }
