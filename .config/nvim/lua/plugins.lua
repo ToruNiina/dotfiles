@@ -12,9 +12,6 @@ return {
 
     -- nvim-tree ---------------------------------------------------------------
     {
-        'nvim-tree/nvim-web-devicons',
-    },
-    {
         'nvim-tree/nvim-tree.lua',
         dependencies = {'nvim-tree/nvim-web-devicons'},
         config = function()
@@ -45,10 +42,6 @@ return {
     -- completion --------------------------------------------------------------
     {
         'neovim/nvim-lspconfig',
-
-        dependencies = {
-            'hrsh7th/cmp-nvim-lsp' -- use capabilities
-        },
         config = function()
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
             lspcfg = require('lspconfig')
@@ -62,7 +55,6 @@ return {
             lspcfg.rust_analyzer.setup({
                 capabilities = capabilities
             })
-
             -- do not shift column position by diagnostics.
             for _, diag in ipairs({ "Error", "Warn", "Info", "Hint" }) do
                 vim.fn.sign_define("DiagnosticSign" .. diag, {
@@ -213,10 +205,6 @@ return {
     },
 
     -- statusline ---------------------------------------------------------------
-    {
-        -- show date and time on status line
-        'archibate/lualine-time',
-    },
     {
         'nvim-lualine/lualine.nvim',
         dependencies = {
