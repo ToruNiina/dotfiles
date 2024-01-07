@@ -54,6 +54,10 @@ return {
             lspcfg = require('lspconfig')
             lspcfg.clangd.setup({
                 capabilities = capabilities,
+                on_attach = function(client, bufnr)
+                    -- do not highlight cpp
+                    client.server_capabilities.semanticTokensProvider = nil
+                end,
             })
             lspcfg.rust_analyzer.setup({
                 capabilities = capabilities
@@ -234,7 +238,8 @@ return {
                     lualine_c = {
                         {
                             'filename',
-                            path = 4,
+                            path = 3,
+                            shorting_target = 40,
                             symbols = {
                                 modified = '[+]',
                                 readonly = '[R]',
