@@ -312,6 +312,7 @@ return {
 
             vim.api.nvim_create_user_command('File', ':Telescope find_files', {})
             vim.api.nvim_create_user_command('Grep', ':Telescope live_grep', {})
+            vim.api.nvim_create_user_command('Repo', ':Telescope git_files', {})
         end,
     },
 }
