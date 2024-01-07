@@ -155,7 +155,7 @@ return {
     {
         'ntpeters/vim-better-whitespace',
         config = function()
-            vim.cmd('highlight ExtraWhiteSpace Error')
+            vim.cmd("hi! link ExtraWhiteSpace Error")
         end,
     },
     {
