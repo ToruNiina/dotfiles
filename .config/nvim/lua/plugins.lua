@@ -215,7 +215,7 @@ return {
         'nvim-lualine/lualine.nvim',
         dependencies = {
             'nvim-tree/nvim-web-devicons',
-            'archibate/lualine-time'
+            'archibate/lualine-time',
         },
         config = function()
             -- make inactive ones visible/readable
@@ -229,18 +229,23 @@ return {
                     theme = custom_iceberg
                 },
                 sections = {
+                    lualine_b = { -- show current pwd
+                        function()
+                            return vim.fn.fnamemodify(vim.fn.getcwd(), ':p:~')
+                        end,
+                    },
                     lualine_c = {
                         {
                             'filename',
-                            path = 3,
+                            path = 1, -- relative path from pwd
                             shorting_target = 40,
                             symbols = {
                                 modified = '[+]',
-                                readonly = '[R]',
+                                readonly = '[]',
                                 unnamed = '[No Name]',
                                 newfile = '[New]',
                             },
-                        }
+                        },
                     },
                     lualine_y = {
                         'location' -- we don't need %, but line:column
@@ -260,7 +265,7 @@ return {
                             shorting_target = 40,
                             symbols = {
                                 modified = '[+]',
-                                readonly = '[R]',
+                                readonly = '[]',
                                 unnamed = '[No Name]',
                                 newfile = '[New]',
                             },
