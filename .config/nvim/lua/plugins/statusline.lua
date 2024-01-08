@@ -8,19 +8,36 @@ return {
         config = function()
             -- make inactive ones visible/readable
             local custom_iceberg = require('lualine.themes.iceberg')
+
             custom_iceberg.inactive.a.fg = '#818596'
             custom_iceberg.inactive.b.fg = '#818596'
             custom_iceberg.inactive.c.fg = '#818596'
 
             require('lualine').setup({
                 options = {
-                    theme = custom_iceberg
+                    theme = custom_iceberg,
                 },
-                sections = {
-                    lualine_b = { -- show current pwd
+                tabline = {
+                    lualine_a = { -- show current pwd
+                        {'branch', icon = ''}
+                    },
+                    lualine_b = {
                         function()
                             return vim.fn.fnamemodify(vim.fn.getcwd(), ':p:~')
                         end,
+                    },
+                    lualine_c = {
+                    },
+                    lualine_x = {
+                    },
+                    lualine_y = {
+                        { 'tabs', mode = 2 },
+                    },
+                    lualine_z = {
+                    }
+                },
+                sections = {
+                    lualine_b = {
                     },
                     lualine_c = {
                         {
@@ -35,6 +52,7 @@ return {
                             },
                         },
                     },
+                    lualine_x = {'encoding', 'fileformat', 'filetype'},
                     lualine_y = {
                         'location' -- we don't need %, but line:column
                     },
@@ -49,7 +67,7 @@ return {
                     lualine_c = {
                         {
                             'filename',
-                            path = 3,
+                            path = 1,
                             shorting_target = 40,
                             symbols = {
                                 modified = '[+]',
