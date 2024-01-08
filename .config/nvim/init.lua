@@ -4,6 +4,12 @@ vim.g.mapleader = ' '
 vim.keymap.set({'n', 'v', 'o'}, '<Leader>h', '0')
 vim.keymap.set({'n', 'v', 'o'}, '<Leader>l', '$')
 
+vim.keymap.set({'n'}, '<C-t>',         ':tabnew<CR>')
+vim.keymap.set({'n'}, '<C-PageUp>',    ':tabnext<CR>')
+vim.keymap.set({'n'}, '<C-kPageUp>',   ':tabnext<CR>')
+vim.keymap.set({'n'}, '<C-PageDown>',  ':tabprevious<CR>')
+vim.keymap.set({'n'}, '<C-kPageDown>', ':tabprevious<CR>')
+
 -- basic settings
 vim.opt.fileencoding  = 'utf-8'
 vim.opt.title         = true
@@ -16,6 +22,7 @@ vim.opt.mouse         = ''
 vim.opt.backspace     = 'indent,eol,start'
 
 vim.opt.showmatch     = true
+vim.opt.matchtime     = 1
 vim.opt.ignorecase    = true
 vim.opt.hlsearch      = true
 vim.opt.smartcase     = true
