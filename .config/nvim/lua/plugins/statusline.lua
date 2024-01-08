@@ -9,6 +9,10 @@ return {
             -- make inactive ones visible/readable
             local custom_iceberg = require('lualine.themes.iceberg')
 
+            -- reverse active/insert
+            custom_iceberg.normal.a.bg = '#84a0c6'
+            custom_iceberg.insert.a.bg = '#818596'
+
             custom_iceberg.inactive.a.fg = '#818596'
             custom_iceberg.inactive.b.fg = '#818596'
             custom_iceberg.inactive.c.fg = '#818596'
