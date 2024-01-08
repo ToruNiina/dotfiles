@@ -152,6 +152,7 @@ return {
             cmp.setup.cmdline(':', {
                 enabled = false -- I don't want to press enter twice
             })
+            vim.opt.pumheight = 10
         end,
     },
 
