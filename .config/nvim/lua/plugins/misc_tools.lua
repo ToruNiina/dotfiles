@@ -3,6 +3,20 @@ return {
         'tpope/vim-commentary',
     },
     {
+        'machakann/vim-sandwich',
+    },
+    {
+        'stevearc/aerial.nvim',
+        config = function()
+            require('aerial').setup({
+                layout = {
+                    default_direction = 'prefer_left'
+                }
+            })
+            vim.api.nvim_create_user_command('Aerial', ':lua require(\'aerial\').toggle({focus=false, direction=\'left\'})', {})
+        end,
+    },
+    {
         'jbyuki/venn.nvim',
         config = function()
             function _G.Toggle_venn()
