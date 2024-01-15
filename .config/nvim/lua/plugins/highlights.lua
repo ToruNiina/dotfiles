@@ -13,6 +13,12 @@ return {
         end,
     },
     {
+        'tpope/vim-markdown',
+        config = function()
+            vim.g.markdown_fenced_languages = {'c', 'cpp', 'scala', 'rust', 'sh', 'bash'}
+        end,
+    },
+    {
         'nvim-treesitter/nvim-treesitter',
         config = function()
             require('nvim-treesitter.configs').setup({
