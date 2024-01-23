@@ -25,7 +25,7 @@ return {
                 highlight = {
                     enable = true,
                     disable = function(lang, buf)
-                        if lang == 'cpp' then
+                        if lang == 'cpp' or lang == 'rust' then
                             return true
                         end
                         local max_filesize = 100 * 1024 -- 100 KB
@@ -45,7 +45,7 @@ return {
                 playground = {
                     enable = true,
                     disable = function(lang, buf)
-                        if lang == 'cpp' then
+                        if lang == 'cpp' or lang == 'rust' then
                             return true
                         end
                         local max_filesize = 100 * 1024 -- 100 KB
