@@ -16,7 +16,11 @@ return {
                 end,
             })
             lspcfg.rust_analyzer.setup({
-                capabilities = capabilities
+                capabilities = capabilities,
+                on_attach = function(client, bufnr)
+                    -- do not highlight cpp
+                    client.server_capabilities.semanticTokensProvider = nil
+                end,
             })
 
             -- do not shift column position by diagnostics.
