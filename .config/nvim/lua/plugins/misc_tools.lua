@@ -3,7 +3,30 @@ return {
         'tpope/vim-commentary',
     },
     {
-        'machakann/vim-sandwich',
+        "folke/trouble.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+    },
+    {
+        "vigoux/notifier.nvim",
+        config = function()
+            require('notifier').setup({
+            })
+        end,
+    },
+    {
+        'chrisgrieser/nvim-chainsaw',
+        config = function()
+            require("chainsaw").setup ({
+                marker = '[chainsaw] log: ',
+                logStatements = {
+                    variableLog = {
+                        cpp = 'std::cerr << "%s %s:" << %s << std::endl;',
+                    },
+                },
+            })
+            vim.keymap.set('n', '<C-l>', ':lua require("chainsaw").variableLog()<CR>')
+            vim.api.nvim_create_user_command('Rmlog', ':lua require("chainsaw").removeLogs()<CR>', {})
+        end,
     },
     {
         'stevearc/aerial.nvim',
