@@ -6,7 +6,7 @@ set -gx EDITOR nvim
 set fish_user_paths
 set fish_user_paths /opt/nvim/bin/          $fish_user_paths
 set fish_user_paths /home/niina/.local/bin/ $fish_user_paths
-set fish_user_paths /home/niina/.cargo/bin/ $fish_user_paths
+source "$HOME/.cargo/env.fish"
 
 set -x COLORTERM truecolor
 
