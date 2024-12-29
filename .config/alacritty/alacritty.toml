@@ -1,0 +1,4 @@
+[font]
+size = 15
+normal = { family = "HackGen Console NF", style = "Regular" }
+bold   = { family = "HackGen Console NF", style = "Bold" }
