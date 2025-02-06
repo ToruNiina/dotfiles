@@ -10,17 +10,10 @@ return {
             lspcfg = require('lspconfig')
             lspcfg.clangd.setup({
                 capabilities = capabilities,
-                on_attach = function(client, bufnr)
-                    -- do not highlight cpp
-                    client.server_capabilities.semanticTokensProvider = nil
-                end,
+                -- cmd = { 'clangd-18' }
             })
             lspcfg.rust_analyzer.setup({
                 capabilities = capabilities,
-                on_attach = function(client, bufnr)
-                    -- do not highlight cpp
-                    client.server_capabilities.semanticTokensProvider = nil
-                end,
             })
 
             -- do not shift column position by diagnostics.

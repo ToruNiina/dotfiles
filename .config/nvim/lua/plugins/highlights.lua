@@ -1,8 +1,7 @@
 return {
     {
-        'cocopon/iceberg.vim',
+        'oahlen/iceberg.nvim',
         config = function()
-            vim.opt.termguicolors = false -- i like iceberg on cterm
             vim.cmd.colorscheme("iceberg")
         end,
     },
