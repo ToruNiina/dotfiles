@@ -1,16 +1,14 @@
 return {
-    -- completion --------------------------------------------------------------
+    { 'nvim-lua/plenary.nvim' },
     {
         'neovim/nvim-lspconfig',
         dependencies = {
             'hrsh7th/cmp-nvim-lsp', -- capabilities
         },
         config = function()
-            local capabilities = require('cmp_nvim_lsp').default_capabilities()
             lspcfg = require('lspconfig')
             lspcfg.clangd.setup({
-                capabilities = capabilities,
-                -- cmd = { 'clangd-18' }
+                cmd = {"clangd-18"},
             })
             lspcfg.rust_analyzer.setup({
                 capabilities = capabilities,
@@ -46,6 +44,9 @@ return {
                     expand = function(args)
                         vim.fn["vsnip#anonymous"](args.body)
                     end,
+                },
+                performance = {
+                    fetching_timeout = 2000,
                 },
                 sources = cmp.config.sources({
                     { name = 'nvim_lsp' },

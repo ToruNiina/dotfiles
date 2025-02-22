@@ -6,6 +6,17 @@ return {
         end,
     },
     {
+        "shellRaining/hlchunk.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        config = function()
+            require("hlchunk").setup({
+                chunk = {
+                    enable = true
+                },
+            })
+        end
+    },
+    {
         'ntpeters/vim-better-whitespace',
         config = function()
             vim.cmd("hi! link ExtraWhiteSpace Error")
@@ -59,7 +70,5 @@ return {
             })
         end,
     },
-    {
-        'bfrg/vim-cpp-modern',
-    },
+
 }
