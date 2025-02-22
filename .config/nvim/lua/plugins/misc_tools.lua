@@ -10,10 +10,10 @@ return {
         dependencies = { "nvim-tree/nvim-web-devicons" },
     },
     {
-        "vigoux/notifier.nvim",
+        "rcarriga/nvim-notify",
         config = function()
-            require('notifier').setup({
-            })
+            require('notify').setup({})
+            vim.notify = require("notify")
         end,
     },
     {
@@ -34,5 +34,28 @@ return {
     {
         "sphamba/smear-cursor.nvim",
         opts = {},
+    },
+    {
+        'notjedi/nvim-rooter.lua',
+        config = function()
+            require('nvim-rooter').setup({})
+        end,
+    },
+    {
+        'stevearc/overseer.nvim',
+        dependencies = {
+            "rcarriga/nvim-notify",
+            'nvim-telescope/telescope.nvim',
+            'stevearc/dressing.nvim',
+        },
+        opts = {},
+        config = function()
+            require('overseer').setup({
+                templates = {
+                    "cmake-build",
+                    "cmake-test",
+                }
+            })
+        end,
     },
 }

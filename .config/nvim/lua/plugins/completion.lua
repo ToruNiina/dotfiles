@@ -6,9 +6,11 @@ return {
             'hrsh7th/cmp-nvim-lsp', -- capabilities
         },
         config = function()
+            local capabilities = require('cmp_nvim_lsp').default_capabilities()
             lspcfg = require('lspconfig')
             lspcfg.clangd.setup({
                 cmd = {"clangd-18"},
+                capabilities = capabilities,
             })
             lspcfg.rust_analyzer.setup({
                 capabilities = capabilities,
