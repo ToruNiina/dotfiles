@@ -44,7 +44,24 @@ return {
                             return true
                         end
                     end,
-                }
+                },
+                ensure_installed = {
+                    "c",
+                    "cpp",
+                    "cuda",
+                    "rust",
+                    "scala",
+                    "fortran",
+                    "verilog",
+                    "cmake",
+                    "lua",
+                    "vim",
+                    "vimdoc",
+                    "markdown",
+                    "markdown_inline",
+                    "toml",
+                    "json",
+                },
             })
         end,
     },
