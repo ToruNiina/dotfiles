@@ -32,13 +32,11 @@ return {
         'monaqa/dial.nvim',
     },
     {
-        "sphamba/smear-cursor.nvim",
-        opts = {},
-    },
-    {
         'notjedi/nvim-rooter.lua',
         config = function()
-            require('nvim-rooter').setup({})
+            require('nvim-rooter').setup({
+                manual = true,
+            })
         end,
     },
     {
