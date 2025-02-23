@@ -31,6 +31,10 @@ return {
     {
         'monaqa/dial.nvim',
     },
+    -- {
+    --     "sphamba/smear-cursor.nvim",
+    --     opts = {},
+    -- },
     {
         'notjedi/nvim-rooter.lua',
         config = function()
@@ -93,5 +97,5 @@ return {
                 ft = { "Avante" },
             },
         },
-    }
+    },
 }
