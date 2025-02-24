@@ -11,6 +11,10 @@ return {
             lspcfg.clangd.setup({
                 cmd = {"clangd-18"},
                 capabilities = capabilities,
+                -- on_attach = function(client, bufnr)
+                --     -- do not highlight cpp
+                --     client.server_capabilities.semanticTokensProvider = nil
+                -- end,
             })
             lspcfg.rust_analyzer.setup({
                 capabilities = capabilities,
@@ -37,7 +41,8 @@ return {
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
-            'p00f/clangd_extensions.nvim'
+            'p00f/clangd_extensions.nvim',
+            'hrsh7th/cmp-nvim-lsp-signature-help',
         },
         config = function()
             local cmp = require('cmp')
@@ -51,10 +56,14 @@ return {
                     fetching_timeout = 2000,
                 },
                 sources = cmp.config.sources({
-                    { name = 'nvim_lsp' },
-                }, {
-                    { name = 'buffer' },
+                    { { name = 'nvim_lsp_signature_help' }, },
+                    { { name = 'nvim_lsp' }, },
+                    { { name = 'buffer' }, },
                 }),
+                window = {
+                    completion = cmp.config.window.bordered(),
+                    documentation = cmp.config.window.bordered(),
+                },
                 sorting = {
                     comparators = {
                         cmp.config.compare.offset,
