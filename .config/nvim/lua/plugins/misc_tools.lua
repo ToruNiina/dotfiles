@@ -99,6 +99,24 @@ return {
                     direction="right",
                 },
             })
+            vim.api.nvim_create_user_command('Run',    'OverseerRun',    {})
+            vim.api.nvim_create_user_command('Open',   'OverseerOpen!',  {})
+            vim.api.nvim_create_user_command('Close',  'OverseerClose',  {})
         end,
+    },
+    {
+        'akinsho/toggleterm.nvim',
+        config = function()
+            require('toggleterm').setup()
+            vim.api.nvim_create_user_command('Term',   'ToggleTerm size=80 direction="vertical"',    {})
+        end,
+
+    },
+    {
+        'kwkarlwang/bufresize.nvim',
+        config = function()
+            require('bufresize').setup()
+        end,
+
     },
 }
