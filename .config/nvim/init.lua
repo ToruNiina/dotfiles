@@ -40,6 +40,7 @@ vim.opt.synmaxcol     = 1000
 vim.opt.showmode      = false
 vim.opt.re            = 1
 vim.opt.foldmethod    = 'marker'
+vim.opt.termguicolors = true
 
 -- to suppress annoying, completely useless sounds
 vim.opt.visualbell = false

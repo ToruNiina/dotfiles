@@ -119,4 +119,40 @@ return {
         end,
 
     },
+    {
+        'norcalli/nvim-colorizer.lua',
+        config = function()
+            require('colorizer').setup()
+        end,
+    },
+    {
+        'shortcuts/no-neck-pain.nvim',
+        config = function()
+            require('no-neck-pain').setup({
+                -- autocmds = {
+                --     -- this screws up vimdiff...
+                --     enableOnVimEnter = true,
+                -- },
+            })
+            vim.api.nvim_create_user_command('NN', 'NoNeckPain', {})
+        end,
+    },
+    {
+        "rmagatti/goto-preview",
+        event = "BufEnter",
+        config = function()
+            require('goto-preview').setup({
+                width = 100,
+                height = 30,
+                post_open_hook = function(_, win)
+                    vim.api.nvim_win_set_option(win, "winhighlight", "Normal:")
+                end
+            })
+            vim.keymap.set("n", "gpd", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>",      {noremap=true})
+            vim.keymap.set("n", "gpt", "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>", {noremap=true})
+            vim.keymap.set("n", "gpi", "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>",  {noremap=true})
+            vim.keymap.set("n", "gpD", "<cmd>lua require('goto-preview').goto_preview_declaration()<CR>",     {noremap=true})
+            vim.keymap.set("n", "gpr", "<cmd>lua require('goto-preview').goto_preview_references()<CR>",      {noremap=true})
+        end,
+    }
 }
