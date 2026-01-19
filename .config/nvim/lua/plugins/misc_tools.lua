@@ -154,5 +154,28 @@ return {
             vim.keymap.set("n", "gpD", "<cmd>lua require('goto-preview').goto_preview_declaration()<CR>",     {noremap=true})
             vim.keymap.set("n", "gpr", "<cmd>lua require('goto-preview').goto_preview_references()<CR>",      {noremap=true})
         end,
+    },
+    {
+        "bkad/CamelCaseMotion",
+        config = function()
+            vim.keymap.set({'n', 'x', 'o'}, 'w',  '<Plug>CamelCaseMotion_w',  {silent = true})
+            vim.keymap.set({'n', 'x', 'o'}, 'b',  '<Plug>CamelCaseMotion_b',  {silent = true})
+            vim.keymap.set({'n', 'x', 'o'}, 'e',  '<Plug>CamelCaseMotion_e',  {silent = true})
+            vim.keymap.set({'n', 'x', 'o'}, 'ge', '<Plug>CamelCaseMotion_ge', {silent = true})
+
+            vim.keymap.set('o', 'iw', '<Plug>CamelCaseMotion_iw', {silent = true})
+            vim.keymap.set('x', 'iw', '<Plug>CamelCaseMotion_iw', {silent = true})
+
+            vim.keymap.set('o', 'ib', '<Plug>CamelCaseMotion_ib', {silent = true})
+            vim.keymap.set('x', 'ib', '<Plug>CamelCaseMotion_ib', {silent = true})
+
+            vim.keymap.set('o', 'ie', '<Plug>CamelCaseMotion_ie', {silent = true})
+            vim.keymap.set('x', 'ie', '<Plug>CamelCaseMotion_ie', {silent = true})
+        end,
+    },
+    {
+        "cohama/lexima.vim",
+        config = function()
+        end
     }
 }
