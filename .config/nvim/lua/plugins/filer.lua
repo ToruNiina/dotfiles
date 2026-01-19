@@ -6,6 +6,13 @@ return {
             vim.g.loaded_netrw = 1
             vim.g.loaded_netrwPlugin = 1
             require("nvim-tree").setup({
+                filters = {
+                    git_ignored = false,
+                    custom = {
+                        "^\\.git",
+                        "^node_modules",
+                    },
+                },
                 on_attach = function(bufnr)
                     local api = require("nvim-tree.api")
                     local function opts(desc)
