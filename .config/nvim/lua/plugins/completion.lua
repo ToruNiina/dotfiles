@@ -1,39 +1,6 @@
 return {
     { 'nvim-lua/plenary.nvim' },
     {
-        'neovim/nvim-lspconfig',
-        dependencies = {
-            'hrsh7th/cmp-nvim-lsp', -- capabilities
-        },
-        config = function()
-            local capabilities = require('cmp_nvim_lsp').default_capabilities()
-            lspcfg = require('lspconfig')
-            lspcfg.clangd.setup({
-                cmd = {"clangd-18"},
-                capabilities = capabilities,
-                -- on_attach = function(client, bufnr)
-                --     -- do not highlight cpp
-                --     client.server_capabilities.semanticTokensProvider = nil
-                -- end,
-            })
-            lspcfg.rust_analyzer.setup({
-                capabilities = capabilities,
-            })
-
-            -- do not shift column position by diagnostics.
-            vim.opt.signcolumn = 'yes'
-            local signs = {
-                DiagnosticSignError = '',
-                DiagnosticSignWarn  = '',
-                DiagnosticSignHint  = '',
-                DiagnosticSignInfo  = '',
-            }
-            for type, icon in pairs(signs) do
-              vim.fn.sign_define(type, { text=icon, texthl=type, numhl=type })
-            end
-        end,
-    },
-    {
         'hrsh7th/nvim-cmp',
         dependencies = {
             'hrsh7th/vim-vsnip',

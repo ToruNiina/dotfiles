@@ -42,9 +42,22 @@ vim.opt.re            = 1
 vim.opt.foldmethod    = 'marker'
 vim.opt.termguicolors = true
 
--- to suppress annoying, completely useless sounds
 vim.opt.visualbell = false
 vim.opt.belloff    = 'all'
+
+-- lspcfg
+vim.lsp.enable("clangd")
+
+vim.opt.signcolumn = 'yes'
+local signs = {
+    DiagnosticSignError = '',
+    DiagnosticSignWarn  = '',
+    DiagnosticSignHint  = '',
+    DiagnosticSignInfo  = '',
+}
+for type, icon in pairs(signs) do
+  vim.fn.sign_define(type, { text=icon, texthl=type, numhl=type })
+end
 
 -- package manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
