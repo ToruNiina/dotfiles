@@ -34,7 +34,7 @@ vim.opt.shiftwidth    = 4
 vim.opt.colorcolumn   = '81'
 vim.opt.cursorline    = true
 
-vim.opt.laststatus    = 2
+vim.opt.laststatus    = 3
 vim.opt.showtabline   = 2
 vim.opt.synmaxcol     = 1000
 vim.opt.showmode      = false
@@ -42,8 +42,17 @@ vim.opt.re            = 1
 vim.opt.foldmethod    = 'marker'
 vim.opt.termguicolors = true
 
+-- to suppress annoying, completely useless sounds
 vim.opt.visualbell = false
 vim.opt.belloff    = 'all'
+
+-- .v file is verilog
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = {"*.v", "*.vh"},
+  callback = function()
+    vim.bo.filetype = "verilog"
+  end,
+})
 
 -- lspcfg
 vim.lsp.enable("clangd")
